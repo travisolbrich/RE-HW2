@@ -50,10 +50,10 @@ int main()
 	}
 
 	/*
-	Sorted Linked List Test
-	-----------------------
+		Sorted Linked List Test
+		-----------------------
 
-	This implements a simple insert-only sorted linked list
+		This implements a simple insert-only sorted linked list
 	*/
 
 	struct ll_node* root = malloc(sizeof(struct ll_node));
