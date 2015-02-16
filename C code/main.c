@@ -8,6 +8,7 @@
 
 void data_types();
 void control_structures();
+int recursive(int num, int flag);
 
 
 int main()
@@ -69,6 +70,7 @@ int main()
 
 	data_types();
 	control_structures();
+	recursive(4, 0);
 
 	getch();
 	return 0;
@@ -187,4 +189,14 @@ void control_structures()
 target:
 	// X will only set to 3 if the x = 1 was skipped
 	if(x == 0) x = 3;
+}
+
+int recursive(int num, int flag)
+{
+	if (flag == 8){
+		return num;
+	}
+	else {
+		return recursive(num + 4, ++flag);
+	}
 }
