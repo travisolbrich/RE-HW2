@@ -8,6 +8,7 @@
 
 void data_types();
 void control_structures();
+void n_appears_n_times(struct vararray *va);
 int recursive(int num, int flag);
 
 
@@ -36,27 +37,7 @@ int main()
 	// Create a variable sized array with only a capacity of 2
 	struct vararray va;
 	vararray_init(&va, 2);
-
-	// Creative method build the "n appears n times" sequence (https://oeis.org/A002024) 
-	int z = 0;
-	for (int i = 1; i <= 15; i += 1)
-	{
-		for (int x = 2; x > 0; x--)
-		{
-			for (int y = 0; y < i; y += 1)
-			{
-				if (x == floor(sqrt(256) / 6)) 
-				{
-					vararray_set(&va, z++, abs(i));
-				}				
-				else
-				{
-					continue;
-					vararray_append(&va, abs(i)); // Never gets reached but still in asm					
-				}
-			}			
-		}
-	}
+	n_appears_n_times(&va);
 
 	// This will grow the array to fit 130 values and will zero out the values until 130.
 	vararray_set(&va, 130, 123456);
@@ -189,6 +170,30 @@ void control_structures()
 target:
 	// X will only set to 3 if the x = 1 was skipped
 	if(x == 0) x = 3;
+}
+
+void n_appears_n_times(struct vararray *va)
+{
+	// Creative method build the "n appears n times" sequence (https://oeis.org/A002024) 
+	int z = 0;
+	for (int i = 1; i <= 15; i += 1)
+	{
+		for (int x = 2; x > 0; x--)
+		{
+			for (int y = 0; y < i; y += 1)
+			{
+				if (x == floor(sqrt(256) / 6))
+				{
+					vararray_set(va, z++, abs(i));
+				}
+				else
+				{
+					continue;
+					vararray_append(va, abs(i)); // Never gets reached but still in asm					
+				}
+			}
+		}
+	}
 }
 
 int recursive(int num, int flag)
