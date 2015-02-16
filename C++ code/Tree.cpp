@@ -13,15 +13,17 @@ void Tree::display(Node **leaf){
 
 	if (leaf != NULL)
 	{
+		//cout << endl;
 		if (!(*leaf)->left == NULL)
 			display(&(*leaf)->left);
 
-		cout << (*leaf)->value << endl;
+		cout << (*leaf)->value << " ";
 
 		if (!(*leaf)->right == NULL)
 			display(&(*leaf)->right);
+		//cout << endl;
 	}
-
+	
 }
 void Tree::destroy_tree(Node *leaf)
 {

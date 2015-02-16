@@ -4,8 +4,9 @@
 void dataTypes::PrintOut(){
 	cout << d << endl;
 	for (int s = 0; s < size; s++){
-		cout << _vArray[s] << endl;
+		cout << _vArray[s] << " ";
 	}
+	cout << endl;
 }
 dataTypes::dataTypes(int s){
 	_vArray = new int[s];
