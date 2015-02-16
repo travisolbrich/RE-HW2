@@ -4,7 +4,7 @@
 
 #include "tree.h"
 #include "vararray.h"
-
+#include "ll.h"
 
 void data_types();
 void control_structures();
@@ -49,6 +49,45 @@ int main()
 		printf("%d ", vararray_get(&va, i));
 	}
 
+	/*
+	Sorted Linked List Test
+	-----------------------
+
+	This implements a simple insert-only sorted linked list
+	*/
+
+	struct ll_node* root = malloc(sizeof(struct ll_node));
+	root->next = 0;
+	root->value = ints[0];
+
+	for (int i = 1; i < 100; i++)
+	{
+		ll_push(&root, ints[i]);
+	}
+
+	
+	printf("\n\nResult of sorting using linked list: \n");
+
+	struct ll_node* node = root;
+
+	while (1)
+	{
+		printf("%d ", node->value);
+
+		if (node->next == 0)
+		{
+			break;
+		}
+
+		node = node->next;
+	}
+
+	/*
+		Basic Functionality Tests
+		-------------------------
+
+		This tests the differet C data types, control structures, and includes an example of a recursive function
+	*/
 	data_types();
 	control_structures();
 	recursive(4, 0);
