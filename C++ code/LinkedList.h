@@ -1,5 +1,7 @@
 #pragma once
 #include <windows.h>
+
+// simlple data cass for the node list
 class LinkNode
 {
 public:
@@ -12,6 +14,7 @@ public:
 			Value = value;
 		};
 		LinkNode(){
+			//useing the windows.h NULL value, wonder if that will change any thing
 			Next = NULL;
 			Value = 0;
 		};

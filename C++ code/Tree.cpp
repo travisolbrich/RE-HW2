@@ -5,10 +5,12 @@ Tree::Tree()
 	root = NULL;
 }
 
+//Public method for displaying the 
 void Tree::display(){
 	display(&root);
 }
 
+//simple in order tree traversal
 void Tree::display(Node **leaf){
 
 	if (leaf != NULL)
@@ -25,6 +27,7 @@ void Tree::display(Node **leaf){
 	}
 	
 }
+//Destorys the tree
 void Tree::destroy_tree(Node *leaf)
 {
 	if (leaf != NULL)
@@ -37,6 +40,7 @@ void Tree::destroy_tree(Node *leaf)
 
 void Tree::insert(int key, Node *leaf)
 {
+	// insert the value to the left if the value is less 
 	if (key< leaf->value)
 	{
 		if (leaf->left != NULL)
@@ -62,7 +66,7 @@ void Tree::insert(int key, Node *leaf)
 		}
 	}
 }
-
+//public method to insert value
 void Tree::insert(int key)
 {
 	if (root != NULL)
@@ -76,6 +80,7 @@ void Tree::insert(int key)
 	}
 }
 
+//search method
 Node *Tree::search(int key)
 {
 	return search(key, root);
