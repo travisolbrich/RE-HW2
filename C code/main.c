@@ -62,7 +62,7 @@ int main()
 
 	for (int i = 1; i < 100; i++)
 	{
-		ll_push(&root, ints[i]);
+		ll_push(root, ints[i]);
 	}
 
 	

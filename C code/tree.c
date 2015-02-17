@@ -11,7 +11,7 @@ int *sort(int *input, int count)
 		insert(input[i], &root);
 	}
 
-	output(&root);
+	output(root);
 
 }
 
@@ -38,12 +38,12 @@ void insert(int key, struct node **leaf)
 }
 
 
-void output(struct node **leaf)
+void output(struct node *leaf)
 {
-	if (*leaf != 0)
+	if (leaf != 0)
 	{
-		output(&(*leaf)->left);
-		printf("%d ", (*leaf)->value);
-		output(&(*leaf)->right);
+		output(leaf->left);
+		printf("%d ", leaf->value);
+		output(leaf->right);
 	}
 }
