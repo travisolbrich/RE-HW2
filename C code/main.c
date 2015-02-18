@@ -37,6 +37,8 @@ int main()
 	// Create a variable sized array with only a capacity of 2
 	struct vararray va;
 	vararray_init(&va, 2);
+
+	// Exercise the variable sized array by having the n_appears_n_times function work on it
 	n_appears_n_times(&va);
 
 	// This will grow the array to fit 130 values and will zero out the values until 130.
@@ -56,10 +58,12 @@ int main()
 		This implements a simple insert-only sorted linked list
 	*/
 
+	// Create the root node
 	struct ll_node* root = malloc(sizeof(struct ll_node));
 	root->next = 0;
 	root->value = ints[0];
 
+	// Insert everything from the integer array into the sorted linked list
 	for (int i = 1; i < 100; i++)
 	{
 		ll_push(root, ints[i]);
@@ -70,11 +74,13 @@ int main()
 
 	struct ll_node* node = root;
 
-	while (1)
+	// Output all node values
+	while (1) 
 	{
 		printf("%d ", node->value);
 
-		if (node->next == 0)
+		// Stop advancing if the next node is null
+		if (node->next == 0) 
 		{
 			break;
 		}
@@ -217,7 +223,7 @@ void control_structures()
 	}
 
 	// do while
-	i == 0;
+	i == 0; // Note this is skipped in ASM
 	do
 	{
 		i++;
@@ -240,13 +246,13 @@ void n_appears_n_times(struct vararray *va)
 {
 	// Creative method build the "n appears n times" sequence (https://oeis.org/A002024) 
 	int z = 0;
-	for (int i = 1; i <= 15; i += 1)
+	for (int i = 1; i <= 15; i += 1) // Compute the sequence out to 15
 	{
-		for (int x = 2; x > 0; x--)
+		for (int x = 2; x > 0; x--) // This loop does nothing except make the asm more complicated
 		{
-			for (int y = 0; y < i; y += 1)
+			for (int y = 0; y < i; y += 1) // Actual loop that outputs "n n times"
 			{
-				if (x == floor(sqrt(256) / 6))
+				if (x == floor(sqrt(256) / 6)) // Complicated way of saying: if( x == 2 )
 				{
 					vararray_set(va, z++, abs(i));
 				}

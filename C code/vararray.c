@@ -1,5 +1,9 @@
+// I used http://www.happybearsoftware.com/implementing-a-dynamic-array.html to learn how to make
+// variable sized arrays in C.
+
 #include "vararray.h"
 
+// Create a new variable sized array
 void vararray_init(struct vararray *va, int capacity)
 {
 	va->size = 0;
@@ -8,6 +12,7 @@ void vararray_init(struct vararray *va, int capacity)
 	va->data = malloc(sizeof(int) * capacity);
 }
 
+// Add to the end of a variable sized array
 void vararray_append(struct vararray *va, int value)
 {
 	vararray_grow_if_full(va);
@@ -16,11 +21,13 @@ void vararray_append(struct vararray *va, int value)
 	va->size++;
 }
 
+// Get a certain item from the variable sized array
 int  vararray_get(struct vararray *va, int index)
 {
 	return va->data[index];
 }
 
+// Set an item in the variable sized array (may need to grow to that point)
 void vararray_set(struct vararray *va, int index, int value)
 {
 	// Zero up to the set index
@@ -32,6 +39,7 @@ void vararray_set(struct vararray *va, int index, int value)
 	va->data[index] = value;
 }
 
+// If the variable array has reached capacity, grow it
 void vararray_grow_if_full(struct vararray *va)
 {
 	if (va->size >= va->capacity)
